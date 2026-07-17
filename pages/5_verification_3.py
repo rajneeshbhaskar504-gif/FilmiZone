@@ -1,29 +1,24 @@
 import streamlit as st
 import time
 
-st.set_page_config(
-    page_title="Verification 3",
-    page_icon="🔒",
-    layout="centered"
-)
+st.set_page_config(page_title="Verification 3", layout="centered")
 
-st.title("🔒 Verification Step 3")
+st.title("✅ Final Verification")
 
-st.warning("Final verification is in progress...")
+st.info("Final verification in progress. Please wait 15 seconds.")
 
 progress = st.progress(0)
 
+status = st.empty()
+
 for i in range(15):
+    progress.progress((i + 1) / 15)
+    status.write(f"⏳ {15 - i - 1} seconds remaining...")
     time.sleep(1)
-    progress.progress((i + 1) * 100 // 15)
 
-st.success("✅ Verification Step 3 Completed")
+status.empty()
 
-st.markdown("---")
+st.success("✅ Verification Completed Successfully!")
 
-st.subheader("Advertisement")
-
-st.info("Your ad will appear here.")
-
-if st.button("Continue ➜"):
-    st.switch_page("pages/6_Verification_4.py")
+if st.button("🎬 Continue to Watch"):
+    st.switch_page("pages/7_Watch.py")
