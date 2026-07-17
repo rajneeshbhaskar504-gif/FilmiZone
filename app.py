@@ -9,28 +9,16 @@ st.set_page_config(
 st.title("🎬 Cinema Hub")
 st.write("Welcome to Cinema Hub")
 
-movie = st.text_input("🔍 Search Movie")
+st.markdown("### 🔥 Latest Videos")
 
-category = st.selectbox(
-    "Select Category",
-    [
-        "All",
-        "Hollywood",
-        "Bollywood",
-        "South",
-        "Web Series"
-    ]
-)
+col1, col2 = st.columns(2)
 
-if movie:
-    st.success(f"Searching for: {movie}")
+with col1:
+    st.image("https://via.placeholder.com/250x350.png?text=Video+1")
+    st.write("Sample Video 1")
 
-st.markdown("---")
+with col2:
+    st.image("https://via.placeholder.com/250x350.png?text=Video+2")
+    st.write("Sample Video 2")
 
-st.subheader("🔥 Latest Movies")
-
-st.image("https://via.placeholder.com/300x450.png?text=Movie+Poster", width=200)
-st.write("Movie Name")
-st.write("Genre : Action")
-st.write("Language : Hindi")
-st.button("View Details")
+st.info("➡️ Left sidebar se pages open kare.")
