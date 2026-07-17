@@ -1,28 +1,32 @@
 import streamlit as st
+import json
 
 st.set_page_config(page_title="Video", layout="wide")
 
-st.title("🎬 Video Details")
+with open("data/videos.json", "r") as f:
+    videos = json.load(f)
 
-st.image("https://via.placeholder.com/350x500.png?text=Thumbnail")
+video = videos[0]
 
-st.subheader("Video Title")
+st.title(video["title"])
 
-st.write("Category : Action")
-st.write("Language : Hindi")
-st.write("Duration : 18 Minutes")
-st.write("Quality : Full HD")
+st.image(video["thumbnail"], width=300)
+
+st.write("### Video Information")
+
+st.write("📂 Category :", video["category"])
+st.write("🌐 Language :", video["language"])
+
+if "year" in video:
+    st.write("📅 Year :", video["year"])
+
+if "duration" in video:
+    st.write("⏱ Duration :", video["duration"])
+
+if "description" in video:
+    st.write(video["description"])
 
 st.markdown("---")
 
-st.subheader("Description")
-
-st.write("""
-Yahan par video ki description ayegi.
-Aap apni video ka description likh sakte ho.
-""")
-
-st.markdown("---")
-
-if st.button("➡ Continue"):
-    st.switch_page("pages/3_Verification_1.py")
+if st.button("Continue ➜"):
+    st.switch_page("pages/3_verification_1.py")
