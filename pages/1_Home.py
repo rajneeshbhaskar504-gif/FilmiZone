@@ -7,6 +7,18 @@ st.title("🎬 FilmiZone")
 
 search = st.text_input("🔍 Search Video")
 
+category = st.selectbox(
+    "📂 Select Category",
+    [
+        "All",
+        "Hollywood",
+        "Bollywood",
+        "South",
+        "Web Series"
+    ]
+)
+
+st.markdown("## 🔥 Trending Videos")
 try:
     with open("data/videos.json", "r") as f:
         videos = json.load(f)
@@ -14,6 +26,11 @@ except:
     videos = []
 
 for video in videos:
+        if category != "All" and video["category"] != category:
+        continue
+
+    if search.lower() not in video["title"].lower():
+        continue
     if search.lower() in video["title"].lower():
         col1, col2 = st.columns([1,2])
 
