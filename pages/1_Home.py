@@ -1,37 +1,29 @@
 import streamlit as st
+import json
 
-st.set_page_config(page_title="Home", layout="wide")
+st.set_page_config(page_title="FilmiZone", layout="wide")
 
-st.title("🎬 Cinema Hub")
+st.title("🎬 FilmiZone")
 
 search = st.text_input("🔍 Search Video")
 
-category = st.selectbox(
-    "Category",
-    [
-        "All",
-        "Action",
-        "Comedy",
-        "Horror",
-        "South",
-        "Hollywood",
-        "Bollywood",
-        "Web Series"
-    ]
-)
+try:
+    with open("data/videos.json", "r") as f:
+        videos = json.load(f)
+except:
+    videos = []
 
-st.markdown("---")
+for video in videos:
+    if search.lower() in video["title"].lower():
+        col1, col2 = st.columns([1,2])
 
-col1, col2, col3 = st.columns(3)
+        with col1:
+            st.image(video["thumbnail"], width=180)
 
-with col1:
-    st.image("https://via.placeholder.com/250x350.png?text=Video+1")
-    st.write("Video 1")
+        with col2:
+            st.subheader(video["title"])
+            st.write("Category:", video["category"])
+            st.write("Language:", video["language"])
 
-with col2:
-    st.image("https://via.placeholder.com/250x350.png?text=Video+2")
-    st.write("Video 2")
-
-with col3:
-    st.image("https://via.placeholder.com/250x350.png?text=Video+3")
-    st.write("Video 3")
+            if st.button(f"Watch Now {video['id']}"):
+                st.switch_page("pages/2_Video.py")
