@@ -1,9 +1,11 @@
 [
   {
     "id": 1,
-    "title": "Sample Video 1",
+    "title": "Sample Video",
     "category": "Hollywood",
+    "language": "Hindi",
     "thumbnail": "https://via.placeholder.com/300x450",
-    "video": "https://www.w3schools.com/html/mov_bbb.mp4"
+    "video": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "description": "Sample description"
   }
 ]
