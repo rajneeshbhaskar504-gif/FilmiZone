@@ -1,24 +1,57 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Cinema Hub",
+    page_title="FilmiZone",
     page_icon="🎬",
     layout="wide"
 )
 
-st.title("🎬 Cinema Hub")
-st.write("Welcome to Cinema Hub")
+st.markdown("""
+<style>
+#MainMenu{visibility:hidden;}
+footer{visibility:hidden;}
+header{visibility:hidden;}
 
-st.markdown("### 🔥 Latest Videos")
+.block-container{
+    padding-top:1rem;
+}
 
-col1, col2 = st.columns(2)
+.navbar{
+    background:#111;
+    padding:15px;
+    border-radius:12px;
+}
 
-with col1:
-    st.image("https://via.placeholder.com/250x350.png?text=Video+1")
-    st.write("Sample Video 1")
+.logo{
+    color:#ff0000;
+    font-size:35px;
+    font-weight:bold;
+}
 
-with col2:
-    st.image("https://via.placeholder.com/250x350.png?text=Video+2")
-    st.write("Sample Video 2")
+.banner{
+    background:linear-gradient(to right,#111,#222,#333);
+    padding:40px;
+    border-radius:15px;
+    margin-top:20px;
+}
 
-st.info("➡️ Left sidebar se pages open kare.")
+.moviecard{
+    background:#181818;
+    padding:15px;
+    border-radius:12px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<div class="navbar">
+<div class="logo">🎬 FilmiZone</div>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<div class="banner">
+<h1>Unlimited Movies & Web Series</h1>
+<p>Watch Your Favourite Videos</p>
+</div>
+""", unsafe_allow_html=True)
